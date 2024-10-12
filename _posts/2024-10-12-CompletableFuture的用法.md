@@ -4,8 +4,6 @@ date: 2024-10-12
 
 ---
 
-# CompletableFuture的用法
-
 ## 异步调用，没有返回值
 
 ```java
