@@ -1,7 +1,6 @@
 ---
 title: "CompletableFuture的用法"
 date: 2024-10-12
-
 ---
 
 ## 异步调用，没有返回值
