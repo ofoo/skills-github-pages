@@ -28,7 +28,7 @@ glibc-devel-2.17-326.el7_9.3.x86_64
 
 ### 1.3 选择下载版本
 
-![image-20241123102709710](2024-11-23-Centos7安装MySQL8.assets/image-20241123102709710.png)
+![image-20241123102709710]({{ site.url }}/assets/2024-11-23-Centos7安装MySQL8.assets/image-20241123102709710.png)
 
 ## 2 MySQL8安装
 
