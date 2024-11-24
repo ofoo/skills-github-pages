@@ -55,13 +55,13 @@ $> cp support-files/mysql.server /etc/init.d/mysql.server
 ### 3.1 启动MySQL
 
 ```bash
-bin/mysqld_safe --user=mysql &
+/usr/local/mysql/bin/mysqld_safe --user=mysql &
 ```
 
 ### 3.2 停止MySQL
 
 ```bash
-bin/mysqladmin -u root -p shutdown
+/usr/local/mysql/bin/mysqladmin -u root -p shutdown
 ```
 
 回车后，输入MySQL密码
@@ -69,7 +69,7 @@ bin/mysqladmin -u root -p shutdown
 ### 3.3 查看MySQL版本
 
 ```bash
-bin/mysqladmin -u root -p version
+/usr/local/mysql/bin/mysqladmin -u root -p version
 ```
 
 回车后，输入MySQL密码
@@ -77,7 +77,48 @@ bin/mysqladmin -u root -p version
 ### 3.4 查看MySQL配置项
 
 ```bash
-bin/mysqladmin -u root -p variables
+/usr/local/mysql/bin/mysqladmin -u root -p variables
 ```
 
 回车后，输入MySQL密码
+
+### 3.5 导出数据库
+
+```bash
+#包含 --databases
+/usr/local/mysql/bin/mysqldump -h localhost -u root -p -P 3303 --databases bb > bb.sql
+#不包含 --databases
+/usr/local/mysql/bin/mysqldump -h localhost -u root -p -P 3303 bb > bb.sql
+```
+
+- 包含 `--databases`，会包含创建数据库语句
+- 不包含 `--databases`，不会创建数据库语句
+
+### 3.6 登录数据库
+
+```bash
+/usr/local/mysql/bin/mysql -u root -p -h 127.0.0.1 -P 3303
+```
+
+### 3.7 导入数据库
+
+#### 3.7.1 不登录导入，不指定数据库名称
+
+如果导出时导出命令包含`--databases`可以使用，或者导入全部数据库时可以使用
+
+```bash
+/usr/local/mysql/bin/mysql < dump.sql
+```
+
+### 3.7.2 不登录导入，指定数据库名称
+
+```bash
+/usr/local/mysql/bin/mysql db1 < dump.sql
+```
+
+### 3.7.3 登录导入
+
+```mysql
+mysql> source dump.sql
+```
+
